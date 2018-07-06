@@ -1,29 +1,27 @@
 import React, { Component } from "react";
+import MusiciansListItem from "./MusiciansListItem";
 
 export default class MusiciansList extends Component {
     constructor(props) {
         super(props);
         
-        // musicians container
+        // musicians list view state
         this.state = {
+            currentlySelectedMusician: null,
             musicians: []
         }
     }
 
     render() {
         return (
-            <div>
-                <ul>
-                    {/* {this.renderMusiciansList()} */}
+            <div className="row h-100 justify-content-center align-items-center">
+                <ul className="list-group">
                     {this.state.musicians}
                 </ul>
             </div>
         );
     }
 
-    // renderMusiciansList() {
-        
-    // }
 
     componentDidMount() {   
         fetch('/api/musicians/get')
@@ -32,15 +30,23 @@ export default class MusiciansList extends Component {
             })
             .then(data => {
                 let musicianViewItems = [];
-                let musicians = data.musicians.map(musician => {
-                    musicianViewItems.push(<li key={musician.name}>{musician.name}</li>);
+                data.musicians.map(musician => {
+                    musicianViewItems.push(
+                        <MusiciansListItem
+                            key={musician.user_id}
+                            img_url={musician.img_url}
+                            name={musician.name} 
+                            rating={musician.rating}
+                            genre={musician.genre}
+                            instrument={musician.instrument}
+                            description={musician.description}
+                        />
+                    );
                 });
 
                 this.setState({
                     musicians: musicianViewItems   //setting this state.musicians = scoped musicians
                 });
-
-                console.log(`musicians: ${this.state.musicians}`);
             });
         ;
     }
