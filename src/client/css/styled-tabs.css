@@ -1,0 +1,14 @@
+.active {
+    background-color: green;
+}
+
+.tabs-list {
+    list-style: none;
+    display: flex;
+}
+
+.tab-item {
+    background-color: grey;
+    border-radius: 1em;
+    padding: .2em;
+}

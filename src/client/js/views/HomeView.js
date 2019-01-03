@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import TabsView from "../components/Tabs";
+import Tab from "../components/Tab";
 
-export default class HomeView extends Component {
+class HomeView extends Component {
     constructor(props) {
         super(props);
 
@@ -17,24 +19,21 @@ export default class HomeView extends Component {
     }
 
     render() {
-
-        const tabprops = {
-            'display': 'inline-flex',
-            'list-style': 'none',
-        };
-
         return (
             <section>
                 <h1>Hire a DJ, or just find someone to jam with.</h1>
                 <div>
-                    <div>
-                        <ul style={tabprops}>
-                            <li>All</li>
-                            <li>Musicians</li>
-                            <li>DJs</li>
-                            <li>Groups/Bands</li>
-                        </ul>
-                    </div>
+                    <TabsView>
+                        <Tab label="All">
+                            <p>All content</p>
+                        </Tab>
+                        <Tab label="Musicians">
+                            <p>Musicians</p>
+                        </Tab>
+                        <Tab label="DJs">
+                            <p>DJs</p>
+                        </Tab>
+                    </TabsView>
                     <div>
                         <form>
                             <input type="search" placeholder="Enter a location..."></input>
@@ -46,3 +45,5 @@ export default class HomeView extends Component {
         );
     }
 }
+
+export default HomeView;

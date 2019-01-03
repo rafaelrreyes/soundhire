@@ -6,6 +6,7 @@ import MusiciansView from "../views/MusiciansView";
 import ContactView from "../views/ContactView";
 import AboutView from "../views/AboutView";
 
+const test = () => <div>test</div>;
 export default class MainComponent extends Component {
     constructor(props) {
         super(props);
