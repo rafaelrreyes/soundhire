@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import MusiciansList from "../views/MusiciansList";
+import { Route, Switch } from "react-router-dom";
 
-export default class MainContainer extends Component {
+import HomeView from "../views/HomeView";
+import MusiciansView from "../views/MusiciansView";
+import ContactView from "../views/ContactView";
+import AboutView from "../views/AboutView";
+
+export default class MainComponent extends Component {
     constructor(props) {
         super(props);
     }
@@ -9,7 +14,12 @@ export default class MainContainer extends Component {
     render() {
         return (
             <div>
-                <MusiciansList />
+                <Switch>
+                    <Route path="/" exact component={HomeView} />
+                    <Route path="/musicians" component={MusiciansView} />
+                    <Route path="/about" exact component={AboutView} />
+                    <Route path="/contact" exact component={ContactView} />
+                </Switch>
             </div>
         )
     }

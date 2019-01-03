@@ -4,7 +4,6 @@ import MusiciansListItem from "./MusiciansListItem";
 export default class MusiciansList extends Component {
     constructor(props) {
         super(props);
-        
         // musicians list view state
         this.state = {
             currentlySelectedMusician: null,

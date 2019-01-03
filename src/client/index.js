@@ -1,11 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import MainComponent from "./js/components/MainComponent";
 import Header from "./js/components/Header";
 import MainMenu from "./js/components/MainMenu";
-import Footer from "./js/components/Footer";
-import Button from "./js/components/Button";
-import UserTextField from "./js/components/UserTextField";
+import MainComponent from "./js/components/MainComponent";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 // font awesome initiation (should move this to its own file or own method, maybe initialize a class and fire off in constructor)
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -14,22 +12,21 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faStar);
 
-class MainContainer extends React.Component {
+class App extends React.Component {
 	render() {
 		return (
-			<div>
-				<Header />
-				<MainMenu />
-				<MainComponent />
-				<UserTextField />
-				<Footer />
-				<Button label="test" />
-			</div>
+			<Router>
+				<div>
+					<Header />
+					<MainMenu />
+					<MainComponent/>
+				</div>
+			</Router>
 		)
 	}
 }
 
 ReactDOM.render(
-	<MainContainer />, 
+	<App />, 
 	document.getElementById("main-container")
 );
